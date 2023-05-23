@@ -1,0 +1,231 @@
+<link rel="stylesheet" type="text/css" href="style/project.css">
+
+{% extends 'base-page.html' %}	
+{% load static %}
+
+
+{% block title %}Проекти{% endblock title %}
+{% block css%}<link rel="stylesheet" type="text/css" href="{% static 'style/company.css' %}">{% endblock css %}
+
+{% block container %}
+	<main>
+		<section class="section__title-page box-content">
+			<div class="breadcrumbs">
+				<a href="{% url 'index' %}">Головна</a> 
+				<svg width="11" height="2" viewBox="0 0 11 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M0 1H11" stroke="#979AA5" stroke-width="0.5"/>
+				</svg>
+ 				<span>Проекти</span>
+			</div>
+			<h1>Проекти</h1>
+			<p>Дозвольте представити вам наші захоплюючі проекти. Кожен проект, що ми розробляємо, - це унікальна симфонія стилю та функціональності. Ми працюємо з великою увагою до деталей, враховуючи ваші потреби та бажання. Наші проекти відображають індивідуальність кожного клієнта і надають вашому простору неповторний характер. Ми поєднуємо інноваційність з естетикою, щоб створити ідеальну гармонію між формою і функцією. Від сучасних мінімалістичних дизайнів до класичного розкішу, наші проекти перетворюють ваші ідеї в реальність, створюючи неперевершену атмосферу в вашому домі. Довірте нам свої проекти, і ми з радістю перетворимо ваші мрії на неймовірну реальність.</p>
+		</section>
+		<section class="section-project">
+			<div class="project__list">
+				<div class="project__list-side">
+					<article class="project__list-item">
+						<img src="{% static 'img/Визуализация интерьера 3.png' %}">
+						<div class="hover">
+							<span>Комфортний інтер'єр</span>
+							<p>Комфортний інтер'єр, що сприяє релаксації і відпочинку.</p>
+							<a href="#">Детальніше
+								<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1 13L7 7L1 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+							</a>
+						</div>
+					</article>
+					<article class="project__list-item">
+						<img src="{% static 'img/PV404_Int_1_V3.png' %}">
+						<div class="hover">
+							<span>Дизайн</span>
+							<p>Естетичний дизайн, який створює гармонію і затишок.</p>
+							<a href="#">Детальніше
+								<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1 13L7 7L1 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+							</a>
+						</div>
+					</article>
+				</div>
+				<div class="project__list-center">
+					<article class="project__list-item">
+						<img src="{% static 'img/PV4_Int_2_V3.png' %}">
+						<div class="hover">
+							<span>Інноваційне</span>
+							<p>Інноваційне використання простору для забезпечення зручності і функціональності.</p>
+							<a href="#">Детальніше
+								<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1 13L7 7L1 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+							</a>
+						</div>
+					</article>
+					<article class="project__list-item">
+						<img src="{% static 'img/Визуализация интерьера 2.png' %}">
+						<div class="hover">
+							<span>Елегантність інтер'єру</span>
+							<p>Елегантність інтер'єру, що захоплює око і надає особливий шарм.</p>
+							<a href="#">Детальніше
+								<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1 13L7 7L1 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+							</a>
+						</div>
+					</article>
+				</div>
+				<div class="project__list-side">
+					<article class="project__list-item">
+						<img src="{% static 'img/PV4_Int_3_V2.png' %}">
+						<div class="hover">
+							<span>@Творчість</span>
+							<p>Творчість у дизайні, що робить приміщення унікальним і неповторним.</p>
+							<a href="#">Детальніше
+								<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1 13L7 7L1 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+							</a>
+						</div>
+					</article>
+					<article class="project__list-item">
+						<img src="{% static 'img/Визуализация интерьера 1.png' %}">
+						<div class="hover">
+							<span>Комфортні меблі</span>
+							<p>Комфортні меблі та аксесуари, що додають затишку і зручності до простору.</p>
+							<a href="#">Детальніше
+								<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1 13L7 7L1 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+							</a>
+						</div>
+					</article>
+				</div>
+			</div>
+			<div class="project__list mini">
+				<div class="project__list-side">
+					<article class="project__list-item">
+						<img src="{% static 'img/Визуализация интерьера 3.png' %}">
+						<div class="hover">
+							<span>Палітра</span>
+							<p>Гармонійна колірна палітра, що створює спокійну та релаксуючу атмосферу.</p>
+							<a href="#">Детальніше
+								<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1 13L7 7L1 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+							</a>
+						</div>
+					</article>
+				</div>
+				<div class="project__list-center">
+					<article class="project__list-item">
+						<img src="{% static 'img/PV4_Int_2_V3.png' %}">
+						<div class="hover">
+							<span>Потреби і вимоги</span>
+							<p>Функціональність, яка задовольняє потреби і вимоги сучасного життя.</p>
+							<a href="#">Детальніше
+								<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1 13L7 7L1 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+							</a>
+						</div>
+					</article>
+				</div>
+				<div class="project__list-side">
+					<article class="project__list-item">
+						<img src="{% static 'img/PV4_Int_3_V2.png' %}">
+						<div class="hover">
+							<span>Дбайливо</span>
+							<p>Дбайливо підібрані деталі, що створюють відчуття розкоші та елегантності.</p>
+							<a href="#">Детальніше
+								<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1 13L7 7L1 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+							</a>
+						</div>
+					</article>
+				</div>
+			</div>
+			<div class="project__list two">
+				<div class="project__list-side">
+					<article class="project__list-item">
+						<img src="{% static 'img/Визуализация интерьера 3.png' %}">
+						<div class="hover">
+							<span>Інтимна атмосфера</span>
+							<p>Інтимна атмосфера, що запрошує до затишку і приватності.</p>
+							<a href="#">Детальніше
+								<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1 13L7 7L1 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+							</a>
+						</div>
+					</article>
+					<article class="project__list-item">
+						<img src="{% static 'img/PV404_Int_1_V3.png' %}">
+						<div class="hover">
+							<span>Уважне планування простору</span>
+							<p>Уважне планування простору, що забезпечує зручність і легкість переміщення.</p>
+							<a href="#">Детальніше
+								<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1 13L7 7L1 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+							</a>
+						</div>
+					</article>
+				</div>
+				<div class="project__list-center">
+					<article class="project__list-item">
+						<img src="{% static 'img/PV4_Int_2_V3.png' %}">
+						<div class="hover">
+							<span>Особистість</span>
+							<p>Інтер'єр, який відображає особистість і стиль власника.</p>
+							<a href="#">Детальніше
+								<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1 13L7 7L1 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+							</a>
+						</div>
+					</article>
+					<article class="project__list-item">
+						<img src="{% static 'img/Визуализация интерьера 2.png' %}">
+						<div class="hover">
+							<span>Збалансований дизайн</span>
+							<p>Збалансований дизайн, що поєднує комфорт і естетику.</p>
+							<a href="#">Детальніше
+								<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1 13L7 7L1 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+							</a>
+						</div>
+					</article>
+				</div>
+				<div class="project__list-side">
+					<article class="project__list-item">
+						<img src="{% static 'img/PV4_Int_3_V2.png' %}">
+						<div class="hover">
+							<span>Дизайнерські рішення</span>
+							<p>Творчі дизайнерські рішення, що вражають оригінальністю та креативністю.</p>
+							<a href="#">Детальніше
+								<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1 13L7 7L1 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+							</a>
+						</div>
+					</article>
+					<article class="project__list-item">
+						<img src="{% static 'img/Визуализация интерьера 1.png' %}">
+						<div class="hover">
+							<span>Надихає</span>
+							<p>Краса інтер'єру, яка надихає і привертає увагу.</p>
+							<a href="#">Детальніше
+								<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1 13L7 7L1 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+							</a>
+						</div>
+					</article>
+				</div>
+			</div>
+	
+		</section>
+	</main>
+{% endblock container %}	

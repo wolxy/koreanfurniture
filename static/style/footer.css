@@ -1,0 +1,129 @@
+footer{
+	padding: 35px 0;
+	border-top: 2px solid #EEF2F8;
+	background: #FFFFFF;
+	height: 120px;
+}
+.footer__box{
+	display: flex;
+	justify-content: space-between;
+}
+.footer__box > *{
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+}
+.footer__social{
+	display: flex;
+}
+.footer__social > a{
+	width: 49px;
+	height: 49px;
+	border: 1px solid #C3CEE2;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	transition: .4s;
+	justify-content: center;
+}
+.footer__social > a:not(:last-child){
+	margin-right: 20px;
+}
+.footer__social > a:hover{
+	background: #C3CEE2;
+}
+.footer__social > a path{
+	transition: .4s;
+}
+.footer__social > a:hover path{
+	fill: #fff;
+}
+.footer__contact{
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+.footer__contact .footer__phone{
+	display: flex;
+	align-items: center;
+	font-weight: 600;
+	font-size: 24px;
+	margin-bottom: 10px;
+	line-height: 35px;
+	color: #3B3D41;
+}
+.footer__contact .footer__phone svg{
+	margin-right: 15px;
+}
+.footer__contact .footer__email{
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 20px;
+	color: #3B3D41;
+}
+.footer__logo span{
+	font-weight: 300;
+	font-size: 14px;
+	line-height: 22px;
+	margin-top: 30px;
+	color: #3B3D41;
+}
+.footer__link{
+	align-items: center;
+}
+.footer__link > a{
+	font-weight: 300;
+	font-size: 14px;
+	line-height: 20px;
+	text-decoration-line: underline;
+	color: #3B3D41;
+}
+.footer__contact span{
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 20px;
+	color: #3B3D41;
+}
+.footer__mobile{
+	display: none;
+	flex-direction: column;
+	padding-top: 15px;
+	border-top: 1px solid #EEF2F8;
+	margin-top: 20px;
+}
+.footer__mobile a{
+	font-weight: 300;
+	font-size: 14px;
+	line-height: 20px;
+	text-decoration-line: underline;
+	margin-bottom: 15px;
+	color: #3B3D41;
+}
+.footer__mobile p{
+	font-weight: 300;
+	font-size: 14px;
+	line-height: 22px;
+	color: #3B3D41;
+}
+@media(max-width: 900px){
+	footer{
+		height: auto;
+		padding: 30px 0;
+	}
+	.footer__mobile{
+		display: flex;
+	}
+	.footer__link > a,.footer__logo{
+		display: none;
+	}
+	.footer__box,.footer__contact{
+		align-items: flex-start;
+		flex-direction: column;
+	}
+	.footer__contact{
+		margin-top: 25px;
+	}
+	.footer__contact span{
+		margin-top: 10px;
+	}
+}

@@ -1,0 +1,120 @@
+.seacrh__result-list_product{
+    display: grid;
+    row-gap: 30px;
+    column-gap: 30px;
+    grid-template-columns: repeat(3, 1fr);
+}
+.seacrh__catagory{
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 20px;
+	margin-bottom: 60px;
+}
+.seacrh__catagory > div{
+	padding: 8px 25px;
+	transition: .4s;
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 28px;
+	color: #3B3D41;
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+.seacrh__catagory > div:not(:last-child){
+	margin-right: 10px;
+}
+.seacrh__catagory > div:hover,.seacrh__catagory > div.active{
+	color: #596DA9;
+	background: #EEF2F8;
+}
+.button__more{
+	width: fit-content;
+	padding: 20px 50px;
+	border: 1px solid #3B3D41;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 20px;
+	margin: 60px auto 0;
+	letter-spacing: 0.1em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #3B3D41;
+	transition: .4s;
+}
+.button__more svg{
+	display: none;
+}
+.button__more:hover{
+	background: #3B3D41;
+	color: #FFFFFF;
+}
+.seacrh__result-list_text{
+	display: flex;
+	flex-direction: column;
+}
+.seacrh__result-list_text > *{
+	display: flex;
+	flex-direction: column;
+}
+.seacrh__result-list_text > * h4{
+	font-weight: 500;
+	font-size: 24px;
+	line-height: 22px;
+	margin-bottom: 20px;
+	color: #3B3D41;
+}
+.seacrh__result-list_text > * p{
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 22px;
+	color: #3B3D41;
+}
+.seacrh__result-list_text > *:not(:last-child){
+	margin-bottom: 60px;
+}
+@media(max-width: 900px){
+	.seacrh__result-list_product{
+       grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media(max-width: 600px){
+	.seacrh__catagory > div{
+		font-size: 14px;
+		line-height: 28px;
+	}
+	.seacrh__catagory{
+		margin-bottom: 35px;
+	}
+	.button__more{
+		width: 100%;
+		padding: 14px 0;
+		font-size: 14px;
+		line-height: 20px;
+		margin-top: 35px;
+	}
+	.seacrh__result-list_product {
+		row-gap: 15px;
+    	grid-template-columns: repeat(1, 1fr);
+	}
+	.button__more svg{
+		margin-left: 10px;
+		display: block;
+	}
+	.button__more:hover{
+		background: #fff;
+		color: #3B3D41;
+	}
+	.seacrh__result-list_text > * h4{
+		font-size: 24px;
+		line-height: 35px;
+		margin-bottom: 5px;
+	}
+	.seacrh__result-list_text > * p{
+		font-size: 14px;
+		line-height: 20px;
+	}
+	.seacrh__result-list_text > *:not(:last-child){
+		margin-bottom: 35px;
+	}
+}

@@ -1,0 +1,113 @@
+.project__list{
+	margin-top: 50px;
+}
+.project__list.mini .project__list-center .project__list-item{
+	height: 450px;
+}
+.project__list.mini .project__list-side{
+	margin-top: 0;
+}
+.project__list.mini{
+	align-items: center;
+	margin-top: -60px;
+}
+.project__list.two{
+	margin-top: -60px;
+}
+.project__list.two .project__list-center .project__list-item:last-child{
+	height: 450px;
+}
+.project__list.two .project__list-center .project__list-item:first-child{
+	height: 790px;
+}
+.section-project > .button-border{
+	display: none;
+	color: #3B3D41;
+	border: 1px solid #3B3D41;
+}
+.section-project > .button-border svg{
+	margin-left: 15px;
+}
+.project__list:first-child{
+	margin-top: 0;
+}
+@media(max-width: 1200px){
+	.project__list-item .hover{
+		padding: 30px;
+	}
+	.section-project > .button-border,.pagination__all{
+		order: 5;
+	}
+	.section-project{
+		display: flex;
+		flex-direction: column;
+	}
+	.project__list > *{
+		display: flex;
+		justify-content: space-between;
+	}
+	.project__list > * > *{
+		width: calc(50% - 15px);
+	}
+	.project__list:first-child{
+		order: 1;
+	}
+	.project__list.two{
+		order: 2;
+	}
+	.project__list.mini{
+		order: 3;
+	}
+	.project__list.mini > *{
+		width: calc(50% - 15px);
+	}
+	.project__list.mini > * > *{
+		width: 100%;
+	}
+	.project__list{
+		flex-wrap: wrap;
+	}
+	.project__list-item{
+		height: 460px !important;
+	}
+	.project__list-side,.project__list.mini,.project__list.two{
+		margin-top: 0;
+	}
+	.project__list-side,.project__list-center{
+		width: 100%;
+	}
+	.section-project{
+		padding: 0 25px;
+	}
+}
+@media(max-width: 900px){
+	.project__list-item {
+	    height: 360px !important;
+	}
+	.pagination__all{
+		display: none;
+	}
+	.section-project > .button-border{
+		display: flex;
+   		justify-content: center;
+	}
+}
+@media(max-width: 600px){
+	.project__list .project__list-center .project__list-item:last-child{
+		height: 550px !important;
+	}
+	.project__list-item {
+		margin-bottom: 15px;
+	    height: 300px !important;
+	}
+	.project__list > *{
+		flex-direction: column;
+	}
+	.project__list > * > *,.project__list.mini > *{
+		width: 100%;
+	}
+	.project__list-item .hover p{
+		font-size: 14px;
+        line-height: 20px;
+	}
+}

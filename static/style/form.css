@@ -1,0 +1,90 @@
+.section-form{
+	position: relative;
+}
+.section-form > svg{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: auto;
+	z-index: -1;
+}
+.text__pages{
+	margin-bottom: 100px;
+}
+.form-box .title{
+	font-size: 36px;
+	line-height: 38px;
+	color: #3B3D41;
+}
+.form-box .subtitle{
+	font-weight: 300;
+	font-size: 20px;
+	line-height: 36px;
+	letter-spacing: 0.1em;
+	color: #3B3D41;
+	margin-bottom: 50px;
+	display: block;
+}
+.form{
+	max-width: 770px;
+}
+.button__box{
+	display: flex;
+	margin-top: 30px;
+	align-items: center;
+}
+.button__box button{
+	width: 270px;
+	cursor: pointer;
+	min-width: 270px;
+	margin-right: 30px;
+}
+.button__box button.disable{
+	background: #EEF2F8;
+	pointer-events: none;
+	color: #8793B5;
+}
+.button__box p{
+	font-weight: 300;
+	font-size: 14px;
+	line-height: 20px;
+	color: #3B3D41;
+}
+@media(max-width: 900px){
+	.section-form > svg{
+		display: none;
+	}
+}
+@media(max-width: 600px){
+	.form-box .title{
+		font-size: 24px;
+		line-height: 32px;
+	}
+	.form-box .subtitle{
+		font-size: 16px;
+		line-height: 36px;
+		margin-bottom: 25px;
+	}
+	.text__pages{
+		margin-bottom: 15px;
+	}
+	.button__box{
+		flex-direction: column;
+	}
+	.button__box{
+		margin-top: 20px;
+		align-items: flex-start;
+	}
+	.button__box p{
+		font-size: 14px;
+		line-height: 20px;
+	}
+	.button__box button{
+		min-width: 100%;
+		margin: 0 0 15px;
+		padding: 15px 0;
+		width: 100%;
+	}
+}

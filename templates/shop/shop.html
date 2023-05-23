@@ -1,0 +1,120 @@
+
+
+{% extends 'base-page.html' %}	
+{% load static %}
+
+
+{% block title %}Каталог{% endblock title %}
+{% block css%}
+<link rel="stylesheet" type="text/css" href="{% static 'style/jquery-ui.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static 'style/catalog.css'%}">
+{% endblock css %}
+
+
+
+{% block container %}
+
+	<main>
+		<style type="text/css">
+			:root{
+				--color: #EEF2F8;
+				--color_hover: #F8F8F8;
+				--bacg_gradient: radial-gradient(72.79% 168.92% at 12.53% 79.42%, #95AA97 0%, #ABBCAD 100%);
+			}
+			.section__menu ul li:hover a, .section__menu ul li.active a{
+				background: #8B9BCB;
+			}
+		</style>
+
+		<section class="section__title-page box-content">
+			<div class="breadcrumbs">
+				<a href="{% url 'index' %}">Головна</a> 
+				<svg width="11" height="2" viewBox="0 0 11 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M0 1H11" stroke="#979AA5" stroke-width="0.5"/>
+				</svg>
+				<a href="{% url 'shop' %}">Товари</a> 
+				<svg width="11" height="2" viewBox="0 0 11 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M0 1H11" stroke="#979AA5" stroke-width="0.5"/>
+				</svg>
+				<a href="#">{{name_category}}</a> 
+			
+		</section>
+		<p>{{value}}</p>
+		<section class="catalog">
+			<div class="box-content">
+				<div class="catalog__list">
+
+					{% for product in object_list %}
+					<div class="catalog__list-item">
+						{% csrf_token %}
+						<a href="{% url 'shop_detail' product.pk %}" class="images">
+							<img src="{{product.image_url}}">
+						</a>
+						<div class="info">
+							<a class="title" href="#">{{ product.name}}</a>
+							<span class="attr">{{ product.description }}</span>
+							<div class="buy">
+								<span class="price">{{ product.price }} ₴</span>
+								<form method="post" action="{% url 'add_item_to_cart' product.pk %}">
+									{% csrf_token %}
+									{% comment %} <input type="number" name="quantity" value="1" min="1" required id="id_quantity"/> {% endcomment %}
+									<button name="quantity" class="button__buy" type="submit" value="1" id="id_quantity" >
+										
+										<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd" clip-rule="evenodd" d="M6 24.5C6 22.567 7.567 21 9.5 21C11.433 21 13 22.567 13 24.5C13 26.433 11.433 28 9.5 28C7.567 28 6 26.433 6 24.5ZM9.5 23.3333C8.85567 23.3333 8.33333 23.8557 8.33333 24.5C8.33333 25.1443 8.85567 25.6667 9.5 25.6667C10.1443 25.6667 10.6667 25.1443 10.6667 24.5C10.6667 23.8557 10.1443 23.3333 9.5 23.3333Z" fill="#3B3D41"/>
+											<path fill-rule="evenodd" clip-rule="evenodd" d="M20 24.5C20 22.567 21.567 21 23.5 21C25.433 21 27 22.567 27 24.5C27 26.433 25.433 28 23.5 28C21.567 28 20 26.433 20 24.5ZM23.5 23.3333C22.8557 23.3333 22.3333 23.8557 22.3333 24.5C22.3333 25.1443 22.8557 25.6667 23.5 25.6667C24.1443 25.6667 24.6667 25.1443 24.6667 24.5C24.6667 23.8557 24.1443 23.3333 23.5 23.3333Z" fill="#3B3D41"/>
+											<path fill-rule="evenodd" clip-rule="evenodd" d="M0 1.17644C0 0.526712 0.522334 0 1.16667 0H3.79343C5.54837 0.00268082 7.02999 1.31548 7.25837 3.07003C7.25839 3.07019 7.25835 3.06987 7.25837 3.07003L7.62634 5.88222H26.8333C27.1829 5.88222 27.514 6.04029 27.7356 6.31292C27.9572 6.58555 28.0459 6.94401 27.9773 7.28965L26.0176 17.1582C26.0175 17.1588 26.0174 17.1593 26.0173 17.1598C26.0173 17.1599 26.0173 17.1598 26.0173 17.1598C25.6871 18.8317 24.2192 20.0263 22.5299 19.9996H10.2127C8.44705 20.0119 6.94839 18.6958 6.71836 16.93M6.71836 16.93L4.94502 3.37735C4.869 2.79266 4.37534 2.35414 3.79062 2.35289H1.16667C0.522334 2.35289 0 1.82618 0 1.17644M7.93421 8.23511L9.03164 16.6222C9.10825 17.2116 9.60897 17.6518 10.1984 17.6467L10.2083 17.6466L22.54 17.6467L22.5623 17.6469C23.1274 17.6578 23.6189 17.2588 23.729 16.6999L23.7294 16.6981L25.4099 8.23511H7.93421Z" fill="#3B3D41"/>
+										</svg>
+									</button>
+								</form>
+							</div>
+						</div>
+					</div>
+                	{% endfor %}
+				</div>
+			</div>
+			<div class="pagination__catalog">
+				<div class="box-content">
+					<a href="#">
+						<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M7 13L1 7L7 1" stroke="#3B3D41" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+						</svg>
+					</a>
+					<ul>
+						<li><a style="color: black" href="#"class="active">1</a></li>
+					</ul>
+					<a href="#">
+						<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M1 13L7 7L1 1" stroke="#3B3D41" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+						</svg>
+					</a>
+				</div>				
+			</div>
+			<div class="pagination__catalog mobile">
+				<div class="box-content">
+					<a href="#">
+						<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M7 13L1 7L7 1" stroke="#3B3D41" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+						</svg>
+					</a>
+					<ul>
+						<li><a href="#">1</a></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#" class="active">4</a></li>
+						<li><a href="#" class="dots">...</a></li>
+						<li><a href="#">26</a></li>
+					</ul>
+					<a href="#">
+						<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M1 13L7 7L1 1" stroke="#3B3D41" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+						</svg>
+					</a>
+				</div>				
+			</div>
+		</section>
+		<section class="catalog__discription">
+		</section>
+	</main>
+	
+{% endblock container%}	

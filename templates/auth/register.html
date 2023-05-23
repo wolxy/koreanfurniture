@@ -1,0 +1,28 @@
+{% extends 'base-page.html' %}	
+{% load static %}
+
+
+{% block title %}Реєстрація{% endblock title %}
+{% block css%}<link rel="stylesheet" type="text/css" href="{% static 'style/auth.css'%}">{% endblock css %}
+
+{% block container %}
+
+<main>
+    <h2>Реєстрація</h2>
+    <form method="POST" action="{% url 'register'%}">
+        {% csrf_token %}
+        {% for field in user_form%}
+
+          {% comment %} <label for="login">Логін:</label>
+          <input type="text" id="login" name="login" required><br><br> {% endcomment %}
+          <span style="color:red;">{{field.error}}</span>
+          {{field.label_tag}}
+          {{field}}
+        {% endfor %}
+       
+  
+        <input type="submit" value="Зареєструватися">
+      </form>
+</main>
+
+{% endblock container%}

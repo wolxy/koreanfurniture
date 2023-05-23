@@ -1,0 +1,28 @@
+{% extends 'base-page.html' %}	
+{% load static %}
+
+
+{% block title %}Вхід в аккаунт{% endblock title %}
+{% block css%}<link rel="stylesheet" type="text/css" href="{% static 'style/auth.css'%}">{% endblock css %}
+
+
+{% block container %}
+
+<main>
+    
+    <h2>Увійти</h2>
+    <form method="POST" active"{% url 'login' %}">
+        {% csrf_token %}
+        <div class="error">{{attention}}</div>
+       
+        <label for="id_username">Логін:</label>
+        <input type="text" id="id_username" name="username" required><br><br>
+    
+        <label for="id_password">Пароль:</label>
+        <input type="password" id="id_password" name="password" required><br><br>
+    
+        <input type="submit" value="Войти в аккаунт">
+      </form>
+</main>
+
+{% endblock container%}

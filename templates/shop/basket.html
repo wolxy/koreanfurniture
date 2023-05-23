@@ -1,0 +1,357 @@
+{% extends 'base-page.html' %}	
+{% load static %}
+
+
+{% block title %}Корзина{% endblock title %}
+{% block css%}
+<link rel="stylesheet" type="text/css" href="{% static 'style/basket.css'%}">
+{% endblock css %}
+
+
+
+{% block container %}
+	
+
+	<main>
+		<section class="section__title-page box-content">
+			<div class="breadcrumbs">
+				<a href="#">Главная</a> 
+				<svg width="11" height="2" viewBox="0 0 11 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M0 1H11" stroke="#979AA5" stroke-width="0.5"/>
+				</svg>
+ 				<span>Кошик</span>
+			</div>
+			<h1>Кошик</h1>
+		</section>
+		<section class="basket__product">
+			<div class="box-content">
+				{% comment %} <a href="#" class="delete__all">
+					Очистити кошик
+					<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M13 1L1 13M1 1L13 13" stroke="#F7941E" stroke-linecap="round" stroke-linejoin="round"/>
+					</svg>
+				</a> {% endcomment %}
+				<div class="basket__product-list">
+					<div class="title__rows">
+						<span class="img"></span>
+						<span class="title">Назва товару</span>
+						<span class="price__one">Ціна за 1 шт.</span>
+						<span class="count__box">Кількість</span>
+						<span class="all__cost">Сума</span>
+						<span class="delete__one">Видалити</span>
+					</div>
+                    
+					{% for item in items %}
+					<div class="basket__product-item">
+						<img class="img" src="{{ item.product.image_url }}">
+						<a href="#" class="title">{{ item.product }}</a>
+						<span class="price__one">{{ item.price }} ₴</span>
+						<span class="count__box">
+							<div class="count">
+								<svg width="18" class="min" height="2" viewBox="0 0 18 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1 1L17 1" stroke="#3B3D41" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+								<input type="text" name="count" id="count" value="{{ item.quantity }}">
+								<svg width="18" height="18" class="max" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M9 1V17M1 9L17 9" stroke="#3B3D41" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+							</div>
+						</span>
+						<span class="all__cost">
+							<div>
+								<span class="new">{{ item.amount }}</span>
+								{% comment %} <span class="old">540,00 ₴</span> {% endcomment %}
+							</div>
+						</span>
+						<form  class="delete__one" method="post" action="{% url 'cart_delete_item' item.pk %}">
+							{% csrf_token %}
+							<button padding="0 20px 0 0" type="submit" >
+								<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M13 1L1 13M1 1L13 13" stroke="#3B3D41" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+							</button>
+						</form> 
+						{% comment %} <a  class="delete__one" href="">
+							<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M13 1L1 13M1 1L13 13" stroke="#3B3D41" stroke-linecap="round" stroke-linejoin="round"/>
+							</svg>
+						</a>  {% endcomment %}
+					</div>
+					{% endfor %}
+				
+				</div>
+				<div class="basket__product-list mobile">
+					{% for item in items %}
+						<div class="basket__product-item">
+							<div class="left">
+								<img class="img" src="{{item.product.image_url}}">
+								<span class="count__box">
+									<div class="count">
+										<svg width="18" class="min" height="2" viewBox="0 0 18 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M1 1L17 1" stroke="#3B3D41" stroke-linecap="round" stroke-linejoin="round"/>
+										</svg>
+										<input type="text" name="count" id="count" value="1">
+										<svg width="18" height="18" class="max" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M9 1V17M1 9L17 9" stroke="#3B3D41" stroke-linecap="round" stroke-linejoin="round"/>
+										</svg>
+									</div>
+								</span>
+							</div>
+							<div class="rigth">
+								<a href="{% url 'shop' %}" class="title">{{ item.product }}</a>
+								<span class="all__cost">
+									<div>
+										<span class="new">{{ item.price }} ₴</span>
+									</div>
+								</span>
+							</div>
+							<form  class="delete__one" method="post" action="{% url 'cart_delete_item' item.pk %}">
+								{% csrf_token %}
+								<button padding="0 20px 0 0" type="submit" >
+									<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M13 1L1 13M1 1L13 13" stroke="#3B3D41" stroke-linecap="round" stroke-linejoin="round"/>
+									</svg>
+								</button>
+							</form> 
+						</div>
+					{% endfor %}
+				</div>
+				<div class="full__price">
+					<div>
+						<span>Всього:</span>
+						<span class="number">{{cart.amount}} ₴ </span>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="basket__step">
+			<div class="box-content">
+				<div class="title">
+					<span>Крок № 1</span>
+					<h2>Заповніть контактні дані</h2>
+					<p>для оформлення замовлення</p>
+				</div>
+				<div class="box mini">
+					<div class="form">
+						<div class="two">
+							<div class="input__box">
+								<input type="text" name="" placeholder="Ваше им'я">
+							</div>
+							<div class="input__box">
+								<input type="text" name="" placeholder="Ваше прізвище">
+							</div>
+						</div>
+						<div class="two">
+							<div class="input__box">
+								<svg width="18" style="margin-bottom: 5px"height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+								
+									<rect y="4.66675" width="18" height="7" fill="#0037A1"/>
+									<rect y="9.33325" width="18" height="7" fill="#f7f700"/>
+								</svg>
+								<input type="text" name="" placeholder="+380999999999">
+							</div>
+							<div class="input__box">
+								<input type="text" name="" placeholder="Email">
+							</div>
+						</div>
+						<div class="one">
+							<textarea placeholder="Введіть свій коментар до замовлення"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="basket__step">
+			<div class="box-content">
+				<div class="title">
+					<span>Крок № 2</span>
+					<h2>Оберіть магазин поруч</h2>
+				</div>
+				<div class="box max">
+					<div class="map">
+						<div class="search__city">
+							<div class="search__city-item">
+								<input type="text" name="" placeholder="Введіть місце розташування...">
+								<a href="#" class="button__blue">Пошук</a>
+							</div>
+							<a href="#" class="button__blue mobile">Пошук</a>
+							<a href="#" class="button__blue">Знайти поблизу</a>
+						</div>
+						<div class="city__box">
+							<div class="city__box-list">
+								<div class="city__box-item">
+									<div class="checkbox-other">
+									    <input type="checkbox" name="paint">
+									    <span>
+									    	<svg width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M11 1L4.125 8L1 4.81818" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+											</svg>
+									    </span>
+									</div>
+									<div>
+										<span class="title">
+											Назва магазину
+											<svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M1 1L5 5L9 1" stroke="#8B9BCB" stroke-linecap="round" stroke-linejoin="round"/>
+											</svg>
+										</span>
+										<div class="list">
+											<p>105120 Кривий Ріг ул. Гагаріна 234</p>
+											<a href="#">0 98 040 10 82</a>
+											<a href="#">bilo@gmail.com</a>
+											<a href="#">bilo.com</a>
+										</div>
+										<div class="distant"><span>2.4 km</span><span>На карте</span></div>
+									</div>
+								</div>
+								<div class="city__box-item">
+									<div class="checkbox-other">
+									    <input type="checkbox" name="paint">
+									    <span>
+									    	<svg width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M11 1L4.125 8L1 4.81818" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+											</svg>
+									    </span>
+									</div>
+									<div>
+										<span class="title">
+											Назва магазину
+											<svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M1 1L5 5L9 1" stroke="#8B9BCB" stroke-linecap="round" stroke-linejoin="round"/>
+											</svg>
+										</span>
+										<div class="list">
+											<p>105120 Кривий Ріг ул. Гагаріна 234</p>
+											<a href="#">0 98 040 10 82</a>
+											<a href="#">bilo@gmail.com</a>
+											<a href="#">bilo.com</a>
+										</div>
+										<div class="distant"><span>2.4 km</span><span>На карте</span></div>
+									</div>
+								</div>
+								<div class="city__box-item">
+									<div class="checkbox-other">
+									    <input type="checkbox" name="paint">
+									    <span>
+									    	<svg width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M11 1L4.125 8L1 4.81818" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+											</svg>
+									    </span>
+									</div>
+									<div>
+										<span class="title">
+											Назва магазину
+											<svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M1 1L5 5L9 1" stroke="#8B9BCB" stroke-linecap="round" stroke-linejoin="round"/>
+											</svg>
+										</span>
+										<div class="list">
+											<p>105120 Кривий Ріг ул. Гагаріна 234</p>
+											<a href="#">0 98 040 10 82</a>
+											<a href="#">bilo@gmail.com</a>
+											<a href="#">bilo.com</a>
+										</div>
+										<div class="distant"><span>2.4 km</span><span>На мапі</span></div>
+									</div>
+								</div>
+								<div class="city__box-item">
+									<div class="checkbox-other">
+									    <input type="checkbox" name="paint">
+									    <span>
+									    	<svg width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M11 1L4.125 8L1 4.81818" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+											</svg>
+									    </span>
+									</div>
+									<div>
+										<span class="title">
+											Назва магазину
+											<svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M1 1L5 5L9 1" stroke="#8B9BCB" stroke-linecap="round" stroke-linejoin="round"/>
+											</svg>
+										</span>
+										<div class="list">
+											<p>105120 Кривий Ріг ул. Гагаріна 234</p>
+											<a href="#">0 98 040 10 82</a>
+											<a href="#">bilo@gmail.com</a>
+											<a href="#">bilo.com</a>
+										</div>
+										<div class="distant"><span>2.4 km</span><span>На мапі</span></div>
+									</div>
+								</div>
+								<div class="city__box-item">
+									<div class="checkbox-other">
+									    <input type="checkbox" name="paint">
+									    <span>
+									    	<svg width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M11 1L4.125 8L1 4.81818" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+											</svg>
+									    </span>
+									</div>
+									<div>
+										<span class="title">
+											Назва магазину
+											<svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M1 1L5 5L9 1" stroke="#8B9BCB" stroke-linecap="round" stroke-linejoin="round"/>
+											</svg>
+										</span>
+										<div class="list">
+											<p>105120 Кривий Ріг ул. Гагаріна 234</p>
+											<a href="#">0 98 040 10 82</a>
+											<a href="#">bilo@gmail.com</a>
+											<a href="#">bilo.com</a>
+										</div>
+										<div class="distant"><span>2.4 km</span><span>На мапі</span></div>
+									</div>
+								</div>
+								<div class="city__box-item">
+									<div class="checkbox-other">
+									    <input type="checkbox" name="paint">
+									    <span>
+									    	<svg width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M11 1L4.125 8L1 4.81818" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+											</svg>
+									    </span>
+									</div>
+									<div>
+										<span class="title">
+											Назва магазину
+											<svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M1 1L5 5L9 1" stroke="#8B9BCB" stroke-linecap="round" stroke-linejoin="round"/>
+											</svg>
+										</span>
+										<div class="list">
+											<p>105120 Кривий Ріг ул. Гагаріна 234</p>
+											<a href="#">0 98 040 10 82</a>
+											<a href="#">bilo@gmail.com</a>
+											<a href="#">bilo.com</a>
+										</div>
+										<div class="distant"><span>2.4 km</span><span>На мапі</span></div>
+									</div>
+								</div>
+							</div>
+							<div class="city__item">
+								<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6229.907266675414!2d33.336355208388646!3d47.89575325197072!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40dad9b7e1380335%3A0xcf23317c7effcc64!2z0JDQotCR!5e0!3m2!1sru!2sua!4v1684775720355!5m2!1sru!2sua" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<section class="basket__last">
+			<div class="box-content">
+				<p>Натискаючи "Відправити заявку" ви погоджуєтеся з Політикою конфіденційності </p>
+				<a href="#" class="button__blue">
+					Надіслати заявку
+					<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M3 9H15" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+						<path d="M10.5 4.5L15 9L10.5 13.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+					</svg>
+				</a>
+			</div>
+		</section>
+	</main>
+	
+
+{% endblock container%}

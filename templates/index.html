@@ -1,0 +1,228 @@
+{% extends 'base-page.html' %}	
+{% load static %}
+
+
+{% block title %}Hi Wood{% endblock title %}
+{% block css%}<link rel="stylesheet" type="text/css" href="{% static 'style/main.css'%}">{% endblock css %}
+
+{% block container %}
+	<main>
+		<section class="preview-page main">
+			<div class="box-content">
+				<div class="section-left text">
+					<h1 class="title-block">Створюйте свій ідеальний простір з нашими стильними меблями
+					</h1>
+					<p class="section-subtitle">Ласкаво просимо до нашого онлайн-магазину меблів, де ми пропонуємо вам широкий вибір високоякісних та модних меблів для вашого дому. </p>
+					<a href="{% url 'company' %}" class="button-border">Детальніше
+						<svg width="8" height="15" viewBox="0 0 8 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M1 13.5L7 7.5L1 1.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+						</svg>
+					</a>
+				</div>
+				<div class="section-right">
+					<img src="{% static 'img/kor2.jpg' %}">
+				</div>
+			</div>
+		</section>
+		<section class="section-catalog">
+			<div class="box-content">
+				<div class="title-block">
+					<h2>Каталог</h2>
+				</div>
+				<div class="catalog-section__list">
+					<div class="catalog-section__item">
+						<div class="img">
+							<img src="https://i.pinimg.com/564x/22/ed/49/22ed499f7380e21f9b1830784a150838.jpg">
+							<a href="{% url 'shop'%}">до каталогу</a>
+						</div>
+						<a href="{% url 'shop' %}" class="link">Всі товари
+							<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M1 13L7 7L1 1" stroke="#3B3D41" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+							</svg>
+						</a>
+					</div>
+					{% for category in categories %}
+						<div class="catalog-section__item">
+							<div class="img">
+								<img src="{{category.image_url}}">
+								<a href="{% url 'category_filter' category.id %}">до каталогу</a>
+							</div>
+							<a href="{% url 'category_filter' category.id %}" class="link">{{category.name}}
+								<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1 13L7 7L1 1" stroke="#3B3D41" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+							</a>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</section>
+		<section class="section-project_mobile">
+			<div class="box-content">
+				<div class="title-block">
+					<div>
+						<span>виконані</span>
+						<h2>Проекти</h2>	
+					</div>
+				</div>
+				<div class="slider__main">
+					<div class="slider__main-item">
+						<img src="{% static 'img/Rectangle 511asdsd2.png' %}">
+						<p>Оздоблення стін панелями це сучасний тренд</p>
+					</div>
+					<div class="slider__main-item">
+						<img src="{% static 'img/Rectangle 511asdsd2.png' %}">
+						<p>Оздоблення стін панелями це сучасний тренд</p>
+					</div>
+					<div class="slider__main-item">
+						<img src="{% static 'img/Rectangle 511asdsd2.png' %}">
+						<p>Оздоблення стін панелями це сучасний тренд</p>
+					</div>
+					<div class="slider__main-item">
+						<img src="{% static 'img/Rectangle 511asdsd2.png' %}">
+						<p>Оздоблення стін панелями це сучасний тренд</p>
+					</div>
+					<div class="slider__main-item">
+						<img src="{% static 'img/Rectangle 511asdsd2.png' %}">
+						<p>Оздоблення стін панелями це сучасний тренд</p>
+					</div>
+					<div class="slider__main-item">
+						<img src="{% static 'img/Rectangle 511asdsd2.png' %}">
+						<p>Оздоблення стін панелями це сучасний тренд</p>
+					</div>
+				</div>
+				<a href="{% url 'project' %}" class="button-border">Усі проєкти</a>
+			</div>
+			
+		</section>
+
+		<section class="section-project">
+			<div class="box-content title-block">
+				<div>
+					<span>виконані</span>
+					<h2>Проекти</h2>	
+				</div>
+				<a href="#" class="border__hover-black">Усі проєкти</a>
+			</div>
+			<div class="project__list">
+				<div class="project__list-side">
+					<article class="project__list-item">
+						<img src="{% static 'img/Визуализация интерьера 3.png' %}">
+						<div class="hover">
+							<span>Комфортний інтер'єр</span>
+							<p>Комфортний інтер'єр, що сприяє релаксації і відпочинку.</p>
+							<a href="#">Детальніше
+								<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1 13L7 7L1 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+							</a>
+						</div>
+					</article>
+					<article class="project__list-item">
+						<img src="{% static 'img/PV404_Int_1_V3.png' %}">
+						<div class="hover">
+							<span>Дизайн</span>
+							<p>Естетичний дизайн, який створює гармонію і затишок.</p>
+							<a href="#">Детальніше
+								<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1 13L7 7L1 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+							</a>
+						</div>
+					</article>
+				</div>
+				<div class="project__list-center">
+					<article class="project__list-item">
+						<img src="{% static 'img/PV4_Int_2_V3.png' %}">
+						<div class="hover">
+							<span>Інноваційне</span>
+							<p>Інноваційне використання простору для забезпечення зручності і функціональності.</p>
+							<a href="#">Детальніше
+								<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1 13L7 7L1 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+							</a>
+						</div>
+					</article>
+					<article class="project__list-item">
+						<img src="{% static 'img/Визуализация интерьера 2.png' %}">
+						<div class="hover">
+							<span>Елегантність інтер'єру</span>
+							<p>Елегантність інтер'єру, що захоплює око і надає особливий шарм.</p>
+							<a href="#">Детальніше
+								<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1 13L7 7L1 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+							</a>
+						</div>
+					</article>
+				</div>
+				<div class="project__list-side">
+					<article class="project__list-item">
+						<img src="{% static 'img/PV4_Int_3_V2.png' %}">
+						<div class="hover">
+							<span>@Творчість</span>
+							<p>Творчість у дизайні, що робить приміщення унікальним і неповторним.</p>
+							<a href="#">Детальніше
+								<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1 13L7 7L1 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+							</a>
+						</div>
+					</article>
+					<article class="project__list-item">
+						<img src="{% static 'img/Визуализация интерьера 1.png' %}">
+						<div class="hover">
+							<span>Комфортні меблі</span>
+							<p>Комфортні меблі та аксесуари, що додають затишку і зручності до простору.</p>
+							<a href="#">Детальніше
+								<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1 13L7 7L1 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+							</a>
+						</div>
+					</article>
+				</div>
+			</div>
+		</section>
+		<section class="section-text section-text_back-gray">
+			<div class="box-content section-text_box">
+				<div class="left">
+					<div class="title-block">
+						<h2>Hiwood це...</h2>
+						<p>Ідейні міркування вищого порядку, а також курс на соціально-орієнтований національний проект </p>
+						<div></div>
+					</div>
+					<div class="text">
+						<p>Ідейні міркування вищого порядку, а також курс на соціально-орієнтований національний проект не залишає шансу для прогресу професійної спільноти</p>
+						<img src="{% static 'img/shutterstock_1681777501 1.png' %}">
+						<span>Отделка стен панелями это современный тренд</span>
+						<p>Ідейні міркування вищого порядку, а також курс на соціально-орієнтований національний проект не залишає шансу для прогресу професійної спільноти</p>
+					</div>
+				</div>
+				<div class="rigth">
+					<img src="{% static 'img/shutterstock_1615509904 2.png' %}">
+				</div>
+			</div>
+		</section>
+		<section class="section-text_project">
+			<div class="box-content section-text_project-box">
+				<div class="left">
+					<img src="{% static 'img/image 33.png' %}">
+				</div>
+				<div class="rigth">
+					<span class="section-attr">нашим</span>
+					<div class="section-title">Партнерам</div>
+					<p class="section-subtitle">Ідейні міркування вищого порядку, а також курс на соціально-орієнтований національний проєкт не залишають шансу для прогресу професійної спільноти міркування вищого порядку,</p>
+					<a href="#" class="button-border">Стати партнером 
+						<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M1 13L7 7L1 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+						</svg>
+					</a>
+				</div>
+			</div>
+		</section>
+		
+	</main>
+	
+{% endblock container %}	
